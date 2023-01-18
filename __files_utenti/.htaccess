@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteCond %{HTTP_REFERER} !^https://www.iaomai.app [NC]
+
+RewriteRUle \.(json)$ [F,L]

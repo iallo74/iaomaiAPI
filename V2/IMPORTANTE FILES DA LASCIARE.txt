@@ -1,9 +1,0 @@
-getScriptForApp.php
-getScriptListForApp.php
-sendActivationEmail.php
-sendDeletionEmail.php
-
-CANCELLARE TUTTI GLI ALTRI SOLO DOPO AVER COMPLETATO LA MIGRAZIONE CHE COMPORTA:
-- Bloccare la versione 1.6 con videata blu
-- Migrare tutti i files
-- Aspettare un giorno/settimana

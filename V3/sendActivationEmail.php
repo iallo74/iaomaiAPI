@@ -1,4 +1,5 @@
 <?php
+/* INALTERATO */
 include_once("_include/_testata.php");
 include_once('../../_include/_phpMailer/class.phpmailer.php');
 include_once('../../_include/_phpMailer/class.smtp.php');
@@ -62,7 +63,6 @@ $oggetto = Lingua([
 // INVIO l'EMAIL	
 mailerGo(	$e,
 			$oggetto,
-			$contenuto,
 			'',
 			$EmailSito,
 			$NomeSito );

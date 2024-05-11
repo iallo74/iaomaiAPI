@@ -1,4 +1,5 @@
 <?php
+/* INALTERATO */
 include_once("_include/_testata.php");
 
 if($b64)$JSNPOST=base64_decode($JSNPOST);

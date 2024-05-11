@@ -1,4 +1,5 @@
 <?php
+/* INALTERATO */
 include_once("_include/_testata.php");
 function getimagepng($base64_string = NULL){
 	$im = base64_decode($base64_string);

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="getImgGallery_GLOBAL.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184609373677023" remote="133184572800000000" />
-<file name="getImgGallery.php" server="ftp.iaomai.app/www.iaomai.app/" local="133182085728894066" remote="133182804600000000" />
-<file name="getFile.php" server="ftp.iaomai.app/www.iaomai.app/" local="133182064826763062" remote="133182804600000000" />
-<file name="putFile.php" server="ftp.iaomai.app/www.iaomai.app/" local="133183498829055840" remote="133183462800000000" />
-<file name="putImages.php" server="ftp.iaomai.app/www.iaomai.app/" local="133183490267044642" remote="133183453800000000" />
-<file name="sincro_backups_crea.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184597161994881" remote="133184560800000000" />
-<file name="sincro_backups_elenco.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184610202156260" remote="133184574600000000" />
-<file name="sincro_backups_download.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184614863769174" remote="133184578800000000" />
-<file name="sincro_backups_elimina.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184615501408944" remote="133184579400000000" />
-<file name="getAvatar.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184707117423658" remote="133184670600000000" />
-<file name="putAvatarUtente.php" server="ftp.iaomai.app/www.iaomai.app/" local="133184718710297251" remote="133184682600000000" />
-<file name="verCart.php" server="ftp.iaomai.app/www.iaomai.app/" local="133185102145924901" remote="133185068400000000" />
-<file name="migrateCart.php" server="ftp.iaomai.app/www.iaomai.app/" local="133185112327671226" remote="133185076200000000" />
-<file name="delImgGallery.php" server="ftp.iaomai.app/www.iaomai.app/" local="133185273436631353" remote="133185237000000000" />
+<file name="getImgGallery_GLOBAL.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="getImgGallery.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="getFile.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="putFile.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="putImages.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="sincro_backups_crea.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="sincro_backups_elenco.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="sincro_backups_download.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="sincro_backups_elimina.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="getAvatar.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="putAvatarUtente.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="verCart.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="migrateCart.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="delImgGallery.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
+<file name="sendActivationEmail.php" server="ftp.iaomai.app/www.iaomai.app/" local="133434360000000000" remote="133434360000000000" />
+<file name="sendDeletionEmail.php" server="ftp.iaomai.app/www.iaomai.app/" local="133434360000000000" remote="133434360000000000" />
+<file name="getScriptForApp.php" server="ftp.iaomai.app/www.iaomai.app/" local="133553536200000000" remote="133553536200000000" />
+<file name="getScriptListForApp.php" server="ftp.iaomai.app/www.iaomai.app/" local="133328088000000000" remote="133328088000000000" />
 </dwsync>

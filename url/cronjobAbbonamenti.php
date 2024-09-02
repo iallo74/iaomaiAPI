@@ -39,7 +39,8 @@ $loghi = [
 	39 => "../../../_img/iaomai/logoAuricologyMapNero.png",
 	41 => "../../../_img/iaomai/logoSchedarioClientiNero.png",
 	40 => "../../../_img/iaomai/logoTsuboMapNero.png",
-	35 => "../../../_img/iaomai/logoAnatomyMapNero.png"
+	35 => "../../../_img/iaomai/logoAnatomyMapNero.png",
+	36 => "../../../_img/iaomai/logoReflexologyyMapNero.png"
 ];
 $oggetti = [
 	"PRE" => [
@@ -133,6 +134,7 @@ if ($record_query!=0){
 				$utenti[$key]["idUtente"] = $row[$n]["idUtente"]*123;
 				$utenti[$key]["Nominativo"] = $row[$n]["Nominativo"];
 				$utenti[$key]["Email"] = $row[$n]["Email"];
+				$utenti[$key]["idCliente"] = $row[$n]["idClienteCMS"];
 				$sigla2 = 'it';
 				if($row[$n]["idLingua"]){
 					RMT_leggi_db2("lingue","idLingua=".$row[$n]["idLingua"],"","","school");
@@ -158,7 +160,7 @@ if ($record_query!=0){
 }
 
 
-function avvisaEmail( $codice, $idUtente, $Nominativo, $Email, $DF, $sigla2,  $corsi, $tipo){
+function avvisaEmail( $codice, $idUtente, $Nominativo, $Email, $DF, $sigla2,  $corsi, $tipo, $idCliente){
 	if($GLOBALS["debug"])echo '<font color="#FF0000">Invia email con avviso scadenza <b>'.$tipo."</b> a ".$Email."</font><br>";
 	$addURL = 'PRE';
 	if($tipo == 'S')$addURL = 'OGGI';
@@ -206,6 +208,10 @@ function avvisaEmail( $codice, $idUtente, $Nominativo, $Email, $DF, $sigla2,  $c
 						'',
 						"iaomai@iaomai.app",
 						'Iáomai' );
+			$Oggetto = $GLOBALS["oggetti"][$addURL][$sigla2];
+			$Messaggio = $contenuto;
+			$DataInvio = time();			
+			RMT_inserisci("email_logs","cms2022");
 				
 		}
 	}
@@ -293,10 +299,10 @@ while(list($key,$ut)=each($utenti)){
 	
 	if($passUt){
 		if($debug)echo $RIGA;
-		if(count($corsiAvviso1)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvviso1, '1' ); 
-		if(count($corsiAvviso2)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvviso2, '2' ); 
-		if(count($corsiAvvisoScadenza)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvvisoScadenza, 'S' ); 
-		if(count($corsiAvvisoDopo)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvvisoDopo, 'D' ); 
+		if(count($corsiAvviso1)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvviso1, '1', $ut["idCliente"] ); 
+		if(count($corsiAvviso2)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvviso2, '2', $ut["idCliente"] ); 
+		if(count($corsiAvvisoScadenza)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvvisoScadenza, 'S', $ut["idCliente"] ); 
+		if(count($corsiAvvisoDopo)>0)avvisaEmail( $ut["codice"], $ut["idUtente"], $ut["Nominativo"], $ut["Email"], $DF, $ut["sigla2"], $corsiAvvisoDopo, 'D', $ut["idCliente"] ); 
 		if($debug)echo "<br><br>";
 	}
 }

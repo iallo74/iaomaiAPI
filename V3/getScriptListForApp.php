@@ -3,90 +3,6 @@
 
 
 
-/*function getPath(){
-	
-}
-$list = [];
-$default_dir = "../../app/v_BETA/";
-$dp=opendir($default_dir);
-while ($file=readdir($dp)){
-	if ($file[0]!='_' && $file[0]!='.' && $file[0]!='-'){
-		if(is_dir($default_dir.$file)) $srv[]=$file;
-	}
-}*/
-
-
-
-
-
-
-
-/*$default_dir = "../../app/v_BETA/";
-function recurly_list($path){
-	$arrobiect = scandir($path);
-	$arrname[0]=1;
-	
-	foreach($arrobiect as $name){
-		if(($name != '.')  ||  ($name != '..')){
-			if(is_dir($path.'\\'.$name)){
-				$arr = recurly_list($path.'\\'.$name);
-				unset($arr[0]);
-				$arrname = array_merge($arrname, $arr);
-			}else{
-				array_push($arrname, $path.'\\'.$name);
-			}
-			$i++;
-		}
-	}
-	return $arrname;
-}
-
-$val = recurly_list($default_dir);
-print_r($val);
-die("-");*/
-
-
-
-
- /*
- 
- 
- FUNZIONANTE IN HTML
- 
- 
- *//*   function ListFolder($path){
-        //using the opendir function
-        $dir_handle = @opendir($path) or die("Unable to open $path");
-
-        //Leave only the lastest folder name
-        $explode = explode("/", $path);
-        $dirname = end($explode);
-
-        //display the target folder.
-        echo ("<li>$dirname\n");
-        echo "<ul>\n";
-        while (false !== ($file = readdir($dir_handle))) {
-            if($file!="." && $file!=".."){
-                if (is_dir($path."/".$file)){
-                    //Display a list of sub folders.
-                    ListFolder($path."/".$file);
-                }else{
-                    //Display a list of files.
-                    echo "<li>$file</li>";
-                }
-            }
-        }
-        echo "</ul>\n";
-        echo "</li>\n";
-
-        //closing the directory
-        closedir($dir_handle);
-    }
-
-$path = '../../app/v_BETA/';
-ListFolder($path);
-die("");*/
-
 
 
 /**
@@ -114,7 +30,8 @@ function buildFullTreeFromPaths(RecursiveIteratorIterator $iterator): array{
  */
 /*$list = array();
 $list_ok = array();*/
-$default_dir = '../../app/v_BETA/';
+$actVer = file_get_contents("../../app/__actVer.txt");
+$default_dir = "../../app/".$actVer."/";
 function buildTreeFromPath(string $path, array $tree = array()){
     $pos = strpos($path, '/');
 
@@ -138,7 +55,7 @@ $recursiveIterator = new RecursiveIteratorIterator(
 $tree = buildFullTreeFromPaths($recursiveIterator);
 
 $tree = json_decode(json_encode($tree),true);
-$tree = $tree[".."][".."]["app"]["v_BETA"];
+$tree = $tree[".."][".."]["app"][$actVer];
 die(base64_encode(json_encode($tree)));
 if(!empty($tree))die(base64_encode(json_encode($tree)));
 else die('404');

@@ -6,7 +6,7 @@ else $JSNPOST=stripslashes(conv($JSNPOST));
 $vars=json_decode($JSNPOST);
 $nomeScript = $vars->nomeScript;
 
-$percorso = "../../app/".file_get_contents("../../app/__actVer.txt")."/";
+$percorso = "../../app/v_BETA/";
 $file = '';
 function makeUrl( $prof = NULL ){
 	$file = '';

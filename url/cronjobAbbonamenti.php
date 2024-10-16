@@ -100,6 +100,7 @@ function maxGiorniPrima(){
 	return $val;
 }
 
+$lingue = json_decode(file_get_contents("../../_include/db/lingue.json"),true);
 
 //?acc=ert_Gert$
 $utenti = array();
@@ -115,15 +116,12 @@ RMT_elenca_db(	"(abbonamenti INNER JOIN corsi ON abbonamenti.idCorso=corsi.idCor
 				"	abbonamenti.tipoAbbStream='m' OR ". // 30 gg
 				"	abbonamenti.tipoAbbStream='b' )",	// 60 gg
 				"abbonamenti.DataFine",
-				"ASC",
-				"school" );
-
+				"ASC" );
+				
 
 if ($record_query!=0){
 	for ($n=0; $n<$record_query; $n++){
 		$pass = true;
-		/*RMT_leggi_db2("abbonamenti","Attivo='1' AND idUtente=".$row[$n]["idUtente"]." AND idAbbonamento<>".$row[$n]["idAbbonamento"]." AND idCorso=".$row[$n]["idCorso"]." AND DataFine>".$row[$n]["DataFine"],"","","school");
-		if($record_tot2>0)$pass = false;*/
 		
 		$DataFine = mktime(0,0,0,date("m",$row[$n]["DataFine"]),date("d",$row[$n]["DataFine"]),date("Y",$row[$n]["DataFine"]));
 		if($DataFine>0 && $pass){
@@ -136,9 +134,10 @@ if ($record_query!=0){
 				$utenti[$key]["Email"] = $row[$n]["Email"];
 				$utenti[$key]["idCliente"] = $row[$n]["idClienteCMS"];
 				$sigla2 = 'it';
+				$sigla3 = 'ita';
 				if($row[$n]["idLingua"]){
-					RMT_leggi_db2("lingue","idLingua=".$row[$n]["idLingua"],"","","school");
-					$sigla2 = $row2["sigla2"];
+					$sigla2 = $lingue[$row[$n]["idLingua"]]["sigla2"];
+					$sigla3 = $lingue[$row[$n]["idLingua"]]["siglaLingua"];
 				}
 				$utenti[$key]["sigla2"] = $sigla2;
 				
@@ -148,7 +147,7 @@ if ($record_query!=0){
 			$utenti[$key]["corsi"][$n] = array();
 			$utenti[$key]["corsi"][$n]["id"] = $row[$n]["idCorso"];
 			$utenti[$key]["corsi"][$n]["idAbbonamento"] = $row[$n]["idAbbonamento"];
-			$utenti[$key]["corsi"][$n]["titolo"] = $row[$n]["TitoloCorso_ita"];
+			$utenti[$key]["corsi"][$n]["titolo"] = $row[$n]["TitoloCorso_".$sigla3];
 			$utenti[$key]["corsi"][$n]["tipoAbbStream"] = $row[$n]["tipoAbbStream"];
 			$utenti[$key]["corsi"][$n]["AvvertitoPre1"] = $row[$n]["AvvertitoPre1"];
 			$utenti[$key]["corsi"][$n]["AvvertitoPre2"] = $row[$n]["AvvertitoPre2"];
@@ -167,7 +166,7 @@ function avvisaEmail( $codice, $idUtente, $Nominativo, $Email, $DF, $sigla2,  $c
 	if($tipo == 'D')$addURL = 'DOPO';
 	$url = '../../'.$sigla2.'/_moduli/iaomai/_moduloRINNOVO_'.$addURL.'.htm';
 	
-	$contenuto = leggi_file($url);
+	$contenuto = file_get_contents($url);
 	
 	$contenuto = str_replace("[NomeCliente]",$Nominativo,$contenuto);
 	$contenuto = str_replace("[DataFine]",FormattaDataBreve($DF),$contenuto);
@@ -223,7 +222,8 @@ Avvisiamo il giorno della scadenza
 Avvisiamo 30 giorni dopo la scadenza
 
 */
-while(list($key,$ut)=each($utenti)){
+//while(list($key,$ut)=each($utenti)){
+foreach($utenti as $key=>$ut){
 	
 	
 	$RIGA = '';

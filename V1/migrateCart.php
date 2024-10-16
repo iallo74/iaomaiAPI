@@ -9,11 +9,13 @@ $JSNPOST = $vars->JSNPOST;
 
 
 $JSNPOST = json_decode(base64_decode($JSNPOST),true);
-while(list($val,$cont) = each($JSNPOST)){
+//while(list($val,$cont) = each($JSNPOST)){
+foreach($JSNPOST as $val=>$cont){
 	$cartellaUtente = "../__files_utenti/".$val."/".$idUtente."/";
 	if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
 	
-	while(list($val2,$row) = each($cont)){
+	//while(list($val2,$row) = each($cont)){
+	foreach($cont as $val2=>$row){
 		$name = $row["name"];
 		$pF = explode(".",$name);
 		$ext = $pF[1];
@@ -23,7 +25,7 @@ while(list($val,$cont) = each($JSNPOST)){
 		if(substr($name,0,2)=='__' && $ext=='jpg'){
 			$file = base64_decode(str_replace("data:image/jpeg;base64,","",$row["cont"]));
 		}
-		salva_file($cartellaUtente.$name,$file);
+		file_put_contents($cartellaUtente.$name,$file);
 	}
 }
 

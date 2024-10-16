@@ -1,17 +1,16 @@
 <?php
 if($_GET["TEST"]!='Gh$hgasd1!')die("Access denied");
 include_once("../../_include/funzioni.php");
-include_once("../../_include/file.php");
 
 
 
 
-include_once('../../_include/LZCompressor/LZContext.php');
-include_once('../../_include/LZCompressor/LZData.php');
-include_once('../../_include/LZCompressor/LZReverseDictionary.php');
-include_once('../../_include/LZCompressor/LZString.php');
-include_once('../../_include/LZCompressor/LZUtil.php');
-include_once('../../_include/LZCompressor/LZUtil16.php');
+include_once('_include/LZCompressor/LZContext.php');
+include_once('_include/LZCompressor/LZData.php');
+include_once('_include/LZCompressor/LZReverseDictionary.php');
+include_once('_include/LZCompressor/LZString.php');
+include_once('_include/LZCompressor/LZUtil.php');
+include_once('_include/LZCompressor/LZUtil16.php');
 use \LZCompressor\LZString as LZ;
 
 function sanitizeUTF16( $txt ){
@@ -28,18 +27,21 @@ function sanitizeUTF16( $txt ){
 
 
 $file = "../__files_utenti/backups/1/BKP_b64-1676500055.json";
-$BKP = json_decode(leggi_file($file),true);
+$BKP = json_decode(file_get_contents($file),true);
 
 $DDDBBB = json_decode(rawurldecode(base64_decode($BKP["JSNPOST"])),true);
 $NEW = array();
 
-while(list($d,$cont) = each($DDDBBB)){
+//while(list($d,$cont) = each($DDDBBB)){
+foreach($DDDBBB as $d=>$cont){
 	$NEW[$d] = array();
 	if($d!='ricerche' && $d!='procedure'){
 		//echo $d.chr(10);
-		while(list($i,$cont2) = each($cont)){
+		//while(list($i,$cont2) = each($cont)){
+		foreach($cont as $i=>$cont2){
 			$NEW[$d][$i] = $cont2;
-			while(list($t,$txt) = each($cont2)){ // elenco le etichette
+			//while(list($t,$txt) = each($cont2)){ // elenco le etichette
+			foreach($cont2 as $t=>$txt){ // elenco le etichette
 				if(gettype($txt)=='string'){
 					if( substr($txt,0,3)=="[@]" ){
 						$NEW[$d][$i][$t] = sanitizeUTF16($txt);
@@ -49,9 +51,11 @@ while(list($d,$cont) = each($DDDBBB)){
 					}
 				}
 				if($t == 'trattamenti' || $t == 'saldi'){
-					while(list($i2,$cont3) = each($txt)){
+					//while(list($i2,$cont3) = each($txt)){
+					foreach($txt as $i2=>$cont3){
 						$NEW[$d][$i][$t][$i2] = $cont3;
-						while(list($t2,$txt2) = each($cont3)){
+						//while(list($t2,$txt2) = each($cont3)){
+						foreach($cont3 as $t2=>$txt2){
 							$new_txt = $txt2;
                             if(gettype($txt2)=='string'){
                                 if( substr($txt2,0,3)=="[@]" ){
@@ -76,5 +80,5 @@ print_r($NEW);
 /*$BKP["JSNPOST"] = base64_encode(rawurlencode(json_encode($NEW)));
 
 
-salva_file("../__files_utenti/backups/1/BKP_b64-1676500055-REV.json",json_encode($BKP));*/
+file_put_contents("../__files_utenti/backups/1/BKP_b64-1676500055-REV.json",json_encode($BKP));*/
 ?>

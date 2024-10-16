@@ -16,7 +16,7 @@ $n = 0;
 while ($file=readdir($dp)){
 	if ($file[0]!='_' && $file[0]!='.' && $file[0]!='-'){
 		if(!is_dir($cartellaUtente.$file) && substr($file,0,3)=='BKP'){
-			$bkp = json_decode(leggi_file($cartellaUtente.$file));
+			$bkp = json_decode(file_get_contents($cartellaUtente.$file));
 			
 			$srv[$n] = array();
 			$srv[$n]["name"] = $file;

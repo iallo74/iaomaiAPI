@@ -6,5 +6,4 @@ ob_start('ob_gzhandler');
 include_once("parametri.php");
 include_once("variabili.php");
 include_once("funzioni.php");
-include_once("file.php");
 ?>

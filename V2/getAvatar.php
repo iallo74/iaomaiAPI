@@ -14,7 +14,7 @@ $fileAvatar = $cartellaUtente.$fileAvatar;
 
 $cont = '';
 if(file_exists($fileAvatar)){
-	$cont = "data:image/jpeg;base64,".base64_encode(leggi_file($fileAvatar));
+	$cont = "data:image/jpeg;base64,".base64_encode(file_get_contents($fileAvatar));
 }
 die($cont);
 ?>

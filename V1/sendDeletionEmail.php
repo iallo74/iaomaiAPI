@@ -15,7 +15,7 @@ $e=$vars->e;
 
 $EmailSito="iaomai@iaomai.app";
 $NomeSito="Iáomai";	
-$contenuto=leggi_file("../../".$siglaLingua."/_moduli/iaomai/_moduloCANCELLAZIONE.htm");
+$contenuto=file_get_contents("../../".$siglaLingua."/_moduli/iaomai/_moduloCANCELLAZIONE.htm");
 $contenuto=str_replace("[NomeCliente]",FormattaHTML($n),$contenuto);
 $contenuto=str_replace("[linkEl]",$linkEl,$contenuto);
 $contenuto=str_replace("[idUtente]",($idUtente*24),$contenuto);
@@ -29,9 +29,9 @@ $oggetto = Lingua([
 		"en" => "Deleting account",
 		"fr" => "Suppression account",
 		"es" => "Eliminación account",
-		"de" => "",
-		"pt" => "",
-		"nl" => ""
+		"de" => "Konto löschen",
+		"pt" => "Eliminação de conta",
+		"nl" => "Account verwijderen"
 		
 		])." ".$NomeSito;
 

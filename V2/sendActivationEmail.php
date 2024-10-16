@@ -25,16 +25,16 @@ $Prodotto=Lingua([
 		"en" => "UNLIMITED subscription to Iáomai",
 		"fr" => "Abonnement ILLIMITÉ à Iáomai",
 		"es" => "Suscripción ILIMITADA a Iáomai",
-		"de" => "",
-		"pt" => "",
-		"nl" => ""
+		"de" => "UNBEGRENZTES Abonnement für Iáomai",
+		"pt" => "Assinatura ILIMITADA para Iáomai",
+		"nl" => "ONBEPERKT abonnement op Iáomai"
 		
 		]);
 
 
 $EmailSito="iaomai@iaomai.app";
 $NomeSito="Iáomai";	
-$contenuto=leggi_file("../../".$siglaLingua."/_moduli/iaomai/_moduloORDINI.htm");
+$contenuto=file_get_contents("../../".$siglaLingua."/_moduli/iaomai/_moduloORDINI.htm");
 $contenuto=str_replace("[NomeCliente]",FormattaHTML($n),$contenuto);
 $contenuto=str_replace("[Prezzo]",ArrotondaEuro($r),$contenuto);
 $contenuto=str_replace("[Prodotto]",FormattaHTML($Prodotto),$contenuto);
@@ -51,9 +51,9 @@ $oggetto = Lingua([
 		"en" => "Your order on",
 		"fr" => "Commande sur",
 		"es" => "Pedido en",
-		"de" => "",
-		"pt" => "",
-		"nl" => ""
+		"de" => "Bestellung auf",
+		"pt" => "Pedido em",
+		"nl" => "Bestelling op"
 		
 		])." ".$NomeSito." (".$o.")";
 

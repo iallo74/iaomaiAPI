@@ -48,16 +48,16 @@ if ($record_query!=0){
 	}
 }
 // leggo i modelli
-$cont_g5_it = leggi_file('../../it/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
-$cont_g5_en = leggi_file('../../en/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
-$cont_g5_es = leggi_file('../../es/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
-$cont_g5_fr = leggi_file('../../fr/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
-$cont_g5_de = leggi_file('../../de/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
-$cont_g9_it = leggi_file('../../it/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
-$cont_g9_en = leggi_file('../../en/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
-$cont_g9_es = leggi_file('../../es/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
-$cont_g9_fr = leggi_file('../../fr/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
-$cont_g9_de = leggi_file('../../de/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
+$cont_g5_it = file_get_contents('../../it/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
+$cont_g5_en = file_get_contents('../../en/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
+$cont_g5_es = file_get_contents('../../es/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
+$cont_g5_fr = file_get_contents('../../fr/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
+$cont_g5_de = file_get_contents('../../de/_moduli/iaomai/_moduloDEMO10gg_g5.htm');
+$cont_g9_it = file_get_contents('../../it/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
+$cont_g9_en = file_get_contents('../../en/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
+$cont_g9_es = file_get_contents('../../es/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
+$cont_g9_fr = file_get_contents('../../fr/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
+$cont_g9_de = file_get_contents('../../de/_moduli/iaomai/_moduloDEMO10gg_g9.htm');
 
 $ogg_g5 = [
 

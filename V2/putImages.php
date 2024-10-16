@@ -16,8 +16,8 @@ for($k=0;$k<count($FILES);$k++){
 	$cartellaUtente = "../__files_utenti/files/".$idUtente."/";
 	if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
 	if($file -> imgMini && $file -> imgBig && strpos($file -> imgBig,"data:image")==0){
-		//salva_file($cartellaUtente.$FILES[$k]->idFile.".json", json_encode($file));
-		salva_file($cartellaUtente.$FILES[$k]->idFile."_img.json", json_encode($file));
+		//file_put_contents($cartellaUtente.$FILES[$k]->idFile.".json", json_encode($file));
+		file_put_contents($cartellaUtente.$FILES[$k]->idFile."_img.json", json_encode($file));
 	}
 }
 			

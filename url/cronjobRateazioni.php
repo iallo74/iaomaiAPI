@@ -93,6 +93,8 @@ $date = [
 	]
 ];
 
+$lingue = json_decode(file_get_contents("../../_include/db/lingue.json"),true);
+
 foreach($date as $TP => $EL){
 	// elenco tutte le rateazioni scadure
 	RMT_elenca_db(	"catalogo_rate INNER JOIN catalogo_ordini ON catalogo_rate.idOrdine=catalogo_ordini.idOrdine",
@@ -108,8 +110,7 @@ foreach($date as $TP => $EL){
 			if(!$ordini[$row[$n]["idOrdine"]]){
 				$sigla2 = 'it';
 				if($row[$n]["idLingua"]){
-					RMT_leggi_db2("lingue","idLingua=".$row[$n]["idLingua"],"","","school");
-					$sigla2 = $row2["sigla2"];
+					$sigla2 = $lingue[$row[$n]["idLingua"]]["sigla2"];
 				}
 				$ImportoRata = 0;
 				if($row[$n]["DataRata3"]<$EL["data"]){
@@ -134,26 +135,12 @@ foreach($date as $TP => $EL){
 					
 					}
 				}
-				/*if(intval($row[$n]["Avvisato1"])<intval($TP)){
-					
-					if($row[$n]["Avvisato1"]!=$TP){
-					
-						$ImportoRata = $row[$n]["ValoreRata1"];
-						$DataScadenza = $row[$n]["DataRata1"];
-						$nRata = 1;
-						$addP = '&r1='.$ImportoRata;
-						
-					}
-				}*/
-				
-				
 				
 				if($ImportoRata){
 					$jsn = '{"o":"'.$row[$n]["idOrdine"].'","i":"'.$row[$n]["idCliente"].'","c":"'.$row[$n]["Casuale"].'"}';
 					$o = intval($row[$n]["idOrdine"])+27;
 					$i = intval($row[$n]["idCliente"])*2537;
 					$str=	'k='.md5(urlencode(base64_encode($jsn)))."&" .
-							//'j='.base64_encode($jsn)."&" .
 							'o='.$o."&" .
 							'i='.$i.$addP;
 					$linkPagamento="https://www.iaomai.app/_mypos/payment_link.php?".$str;
@@ -162,7 +149,7 @@ foreach($date as $TP => $EL){
 					setLocal();
 					$msg = str_replace("[day]",strftime ($format_dateBreve,$DataScadenza),$EL["msg"][$lang]);
 					$url = '../../'.$sigla2.'/_moduli/iaomai/_moduloRATEAZIONE.htm';
-					$contenuto = leggi_file($url);
+					$contenuto = file_get_contents($url);
 					$contenuto = str_replace("[Titolo]",$titolo,$contenuto);
 					$contenuto = str_replace("[msg]",$msg,$contenuto);
 					$contenuto = str_replace("[NomeCliente]",$row[$n]["NomeCliente"],$contenuto);

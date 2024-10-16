@@ -18,7 +18,7 @@ $foto -> imgMini = $vars -> e;
 $foto -> imgBig = $vars -> F;
 $cartellaUtente = "../__files_utenti/files/".$idUtente."/";
 if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
-salva_file($cartellaUtente."file_".$vars->idFoto.".json", json_encode($foto));
+file_put_contents($cartellaUtente."file_".$vars->idFoto.".json", json_encode($foto));
 
 
 $foto -> imgBig = "";

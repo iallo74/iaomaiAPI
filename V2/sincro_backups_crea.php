@@ -17,7 +17,7 @@ $cartellaUtente = "../__files_utenti/backups/".$idUtente."/";
 if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
 
 $nomeBackup = "BKP_b64-".time();
-salva_file($cartellaUtente.$nomeBackup.".json",stripslashes($JSNPOST));
+file_put_contents($cartellaUtente.$nomeBackup.".json",stripslashes($JSNPOST));
 
 if($errore)die("404");
 else die($nomeBackup);

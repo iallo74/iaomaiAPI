@@ -44,10 +44,10 @@ function session_is_registered($var = NULL){
 		else return false;
 	}
 }
-if(!get_magic_quotes_gpc()){
+//if(!get_magic_quotes_gpc()){
 	$_GET    = array_map('addslashes', $_GET); 
 	$_POST   = array_map('addslashes', $_POST); 
 	$_COOKIE = array_map('addslashes', $_COOKIE); 
-}
+//}
 if(!ini_get('register_globals'))register_globals();
 ?>

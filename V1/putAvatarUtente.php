@@ -68,11 +68,11 @@ $fileAvatarMicroJPG = $cartellaUtente."__avatarMicro.jpg";
 
 if($imgAvatar){
 	$IMG = base64_decode(str_replace("data:image/jpeg;base64,","",$imgAvatar));
-	salva_file("../__downloads/img.json", str_replace("data:image/jpeg;base64,","",$imgAvatar));
-	salva_file($fileAvatarJPG, $IMG);
+	file_put_contents("../__temp/img.json", str_replace("data:image/jpeg;base64,","",$imgAvatar));
+	file_put_contents($fileAvatarJPG, $IMG);
 	$avatarMicro = resize_image($IMG, 20, 20);
 	if($avatarMicro){
-		salva_file($fileAvatarMicroJPG, $avatarMicro);
+		file_put_contents($fileAvatarMicroJPG, $avatarMicro);
 	}
 	
 }else{
@@ -85,10 +85,10 @@ $fileLogoMicroJPG = $cartellaUtente."__logoMicro.jpg";
 
 if($logoAzienda){
 	$IMG = base64_decode(str_replace("data:image/jpeg;base64,","",$logoAzienda));
-	salva_file($fileLogoJPG, $IMG);
+	file_put_contents($fileLogoJPG, $IMG);
 	$logoMicro = resize_image($IMG, 20, 20);
 	if($logoMicro){
-		salva_file($fileLogoMicroJPG, $logoMicro);
+		file_put_contents($fileLogoMicroJPG, $logoMicro);
 	}
 	
 }else{

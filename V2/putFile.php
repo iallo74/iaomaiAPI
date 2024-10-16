@@ -19,8 +19,8 @@ $files -> imgBig = $vars -> F;
 $files -> type = $vars -> t ? $vars -> t : $vars -> e;
 $cartellaUtente = "../__files_utenti/files/".$idUtente."/";
 if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
-//salva_file($cartellaUtente."file_".$vars->idFile.".json", json_encode($files));
-salva_file($cartellaUtente."file_".$vars->idFile."_".$files -> type.".json", json_encode($files));
+//file_put_contents($cartellaUtente."file_".$vars->idFile.".json", json_encode($files));
+file_put_contents($cartellaUtente."file_".$vars->idFile."_".$files -> type.".json", json_encode($files));
 
 
 $files -> imgBig = "";

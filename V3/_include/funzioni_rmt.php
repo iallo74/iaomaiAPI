@@ -95,7 +95,7 @@ function getDB($funct = NULL, $tabella = NULL, $query=false, $ord=false, $tipoOr
 		)
 	);
 	$context  = stream_context_create($opts);
-	$JSN = file_get_contents('https://www.corpomentespirito.it/___API/'.$funct.'.php', false, $context);
+	$JSN = file_get_contents('https://www.iaomai.it/___API/db/'.$funct.'.php', false, $context);
 	//$JSN = utf8_encode($JSN);	
 	$JSN = base64_decode($JSN);	
 	/*$JSN = jsonRemoveUnicodeSequences($JSN);
@@ -165,7 +165,8 @@ function RMT_aggiorna($tabella = NULL, $condizione = NULL, $db=false){
 		$query=array();
 		$query["condizione"]=$condizione;
 		$query["q"]=$q;
-		while(list($val,$cont)=each($GLOBALS["fields"])){
+		//while(list($val,$cont)=each($GLOBALS["fields"])){
+		foreach($GLOBALS["fields"] as $val=>$cont){
 			$query["q"][$cont]=addslashes($GLOBALS[$cont])."";
 		}
 		return getDB( "aggiorna", $tabella, json_encode($query), '', '', $db );
@@ -174,7 +175,8 @@ function RMT_aggiorna($tabella = NULL, $condizione = NULL, $db=false){
 function RMT_inserisci($tabella = NULL, $db=false){
 	if(getDB( "get_fields", $tabella, '', '', '', $db )){
 		$q=array();
-		while(list($val,$cont)=each($GLOBALS["fields"])){
+		//while(list($val,$cont)=each($GLOBALS["fields"])){
+		foreach($GLOBALS["fields"] as $val=>$cont){
 			$q[$cont]=addslashes($GLOBALS[$cont])."";
 		}
 		return getDB( "inserisci", $tabella, json_encode($q), '', '', $db );

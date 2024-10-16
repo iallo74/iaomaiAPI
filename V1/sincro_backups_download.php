@@ -11,7 +11,7 @@ $f = $vars -> f;
 $cartellaUtente = "../__files_utenti/backups/".$idUtente."/";
 if(!file_exists($cartellaUtente))mkdir($cartellaUtente);
 
-$bkp = leggi_file($cartellaUtente.$f.".json");
+$bkp = file_get_contents($cartellaUtente.$f.".json");
 
 
 if($errore)die("404");

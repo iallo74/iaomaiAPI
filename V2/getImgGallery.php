@@ -27,7 +27,7 @@ if($idFile){
 
 	if(!file_exists($file))$file = "../__files_utenti/files/frv/".$idFile.".json";
 	if(!file_exists($file))die("404");
-	$row = json_decode(leggi_file($file));
+	$row = json_decode(file_get_contents($file));
 	$res = json_decode('{}');
 	$res -> n = $n;
 	$res -> idFile = $idFile;

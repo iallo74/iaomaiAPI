@@ -7,5 +7,5 @@ $vars=json_decode($JSNPOST);
 $idFile=$vars->idFoto;
 $idU=$vars->idU;
 
-die(leggi_file("../__files_utenti/files/".$idU."/file_".$idFile.".json"));
+die(file_get_contents("../__files_utenti/files/".$idU."/file_".$idFile.".json"));
 ?>

@@ -10,7 +10,7 @@ $idU=$vars->idU;
 
 
 
-//die(leggi_file("../__files_utenti/files/".$idU."/file_".$idFile.".json"));
+//die(file_get_contents("../__files_utenti/files/".$idU."/file_".$idFile.".json"));
 
 
 $folder = "../__files_utenti/files/".$idU."/";
@@ -18,7 +18,7 @@ $dp=opendir($folder);
 while($file=readdir($dp)){
 	if ($file[0]!='_' && $file[0]!='.' && $file[0]!='-'){
 		if(preg_match("/file_".$idFile."[^\.]*\.json/",$file)){
-			die(leggi_file($folder.$file));
+			die(file_get_contents($folder.$file));
 		}
 	}
 }

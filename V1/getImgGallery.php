@@ -16,7 +16,7 @@ if($idFoto){
 	$file_dwnl = $cartellaUtente.$idFile.".json";
 	if(!file_exists($file_dwnl))$file_dwnl = "../__files_utenti/files/frv/".$idFile.".json";
 	if(!file_exists($file_dwnl))die("404");
-	$row = json_decode(leggi_file($file_dwnl));
+	$row = json_decode(file_get_contents($file_dwnl));
 	$res = json_decode('{}');
 	$res -> n = $n;
 	$res -> idFoto = $idFoto;

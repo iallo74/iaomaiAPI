@@ -31,7 +31,7 @@ if(!file_exists($percorso.$file)){
 if(!file_exists($percorso.$file)){
 	$file = makeUrl(4);
 }
-if(file_exists($percorso.$file))die(base64_encode(leggi_file($percorso.$file)));
+if(file_exists($percorso.$file))die(base64_encode(file_get_contents($percorso.$file)));
 else die('404 '.base64_encode($percorso.$file));
 
 ?>
